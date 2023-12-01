@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Introduction</title>
+
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="introduction.html">Introduction</a>
+</li>
+<li>
+  <a href="data.html">Data</a>
+</li>
+<li>
+  <a href="analysis.html">Prelimary Analysis</a>
+</li>
+<li>
+  <a href="EDA.html">EDA</a>
+</li>
+<li>
+  <a href="regression_model.html">Regression</a>
+</li>
+<li>
+  <a href="conclusion.html">Conclusion</a>
+</li>
+<li>
+  <a href="https://7lx8uo-txbrook.shinyapps.io/map_dashboard/#section-life-expectancy">Shiny App</a>
+</li>
+<li>
+  <a href="project_report.html">Report</a>
+</li>
+<li>
+  <a href="mailto:&lt;jy3360@cumc.columbia.edu&gt;">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/candicejiaruiyu/p8105_mortality.github.io">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Introduction</h1>
+
+</div>
+
+
+ 
+<div id="motivation" class="section level1">
+<h1>Motivation</h1>
+<p>Predictors of in-hospital mortality in patients with heart failure
+admitted to the intensive care unit (ICU) remain unclear. Aimed to lay a
+solid foundation for Survival Analysis, deepen our understanding of
+Mortality, we conducted a comprehensive research based on the patient’s
+Mortality factors dataset. Although this dataset belongs to
+cross-sectional study, we still can dig out some key patterns that
+affect Mortality and detect abnormal characteristics that indicate the
+death sign at the early stage.</p>
+ 
+ 
+</div>
+<div id="initial-question" class="section level1">
+<h1>Initial Question</h1>
+<p>Initial questions:</p>
+<p>What factors have a significant impact on mortality?</p>
+<p>What factors account for independent risk factors of in-hospital
+mortality?</p>
+<p>What potential clinical implications are the top three biomedical
+indices that make the most significant contributions to the specific
+disease?</p>
+ 
+ 
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Hospital mortality refers to the rate at which patients die during
+their hospital stay. It is a critical metric that healthcare providers
+and institutions use to assess the effectiveness of medical care and
+patient outcomes within a hospital setting. The hospital mortality rate
+is typically expressed as a percentage and is calculated by dividing the
+number of deaths that occur in a hospital by the total number of
+patients admitted during a specific period.</p>
+ 
+ 
+<div id="related-work" class="section level2">
+<h2>Related work</h2>
+<p>Here are some key areas and examples of related published work:</p>
+<ol style="list-style-type: decimal">
+<li><p>“Trends in Hospital Mortality Between 1999 and 2017”: Studies
+analyzing long-term trends in hospital mortality rates can provide
+insights into improvements or challenges in healthcare outcomes over
+time. Such research often involves large-scale data analysis to identify
+patterns and changes.</p></li>
+<li><p>“Risk Factors for Hospital Mortality in Critically Ill Patients”:
+Research that focuses on identifying and understanding specific risk
+factors associated with increased hospital mortality can inform targeted
+interventions. This may involve studying critically ill populations and
+factors such as comorbidities, severity of illness, and response to
+treatment.</p></li>
+<li><p>“Effectiveness of Early Warning Systems in Reducing Hospital
+Mortality”: Investigating the impact of early warning systems and rapid
+response teams on hospital mortality is a common area of interest. This
+research often assesses the effectiveness of these systems in
+identifying deteriorating patients and facilitating timely
+interventions.</p></li>
+<li><p>“Quality Improvement Initiatives and Their Impact on Hospital
+Mortality”: Published work on quality improvement initiatives explores
+how hospitals implement changes to improve patient outcomes. This may
+involve the introduction of new protocols, guidelines, or patient safety
+measures.</p></li>
+<li><p>“Role of Health Information Technology in Predicting and
+Preventing Hospital Mortality”: Research examining the integration of
+health information technology, predictive modeling, and artificial
+intelligence in predicting and preventing hospital mortality is an
+evolving field. These studies often assess the accuracy and clinical
+utility of predictive models.</p></li>
+<li><p>“Ethical Considerations in End-of-Life Decision-Making and
+Hospital Mortality”: Ethical considerations surrounding end-of-life
+care, decision-making processes, and their impact on hospital mortality
+are important topics. Studies in this area may explore the perspectives
+of healthcare professionals, patients, and families.</p></li>
+<li><p>“Interdisciplinary Collaboration and its Influence on Hospital
+Mortality”: Research that investigates the role of effective
+communication and collaboration among healthcare teams in reducing
+hospital mortality is essential. This may include studies on teamwork,
+communication strategies, and interdisciplinary approaches to patient
+care.</p></li>
+<li><p>“Comparative Effectiveness Research in Hospital Mortality”:
+Comparative effectiveness research aims to compare different treatment
+modalities and strategies to determine their impact on patient outcomes.
+Published work in this area may assess the effectiveness of various
+medical interventions and healthcare delivery models.</p></li>
+</ol>
+ 
+ 
+</div>
+<div id="sources" class="section level2">
+<h2>Sources</h2>
+<p>Our main datasets is Zhou, Jingmin et al. (2021), Prediction model of
+in-hospital mortality in intensive care unit patients with heart
+failure: machine learning-based, retrospective analysis of the MIMIC-III
+database, Dryad, Dataset, <a
+href="https://doi.org/10.5061/dryad.0p2ngf1zd"
+class="uri">https://doi.org/10.5061/dryad.0p2ngf1zd</a>, which covers
+the patients’ various indexes comprehensively, including 51 variables
+such as Blood Pressure and BMI.</p>
+ 
+ 
+</div>
+<div id="variable-selection" class="section level2">
+<h2>Variable Selection</h2>
+<p>The selection of variables for studying hospital mortality is a
+crucial step in research and analysis. Researchers typically consider a
+combination of patient-specific factors, clinical indicators, and
+system-level variables to develop comprehensive models that help
+understand and predict hospital mortality. Here are some common
+variables that researchers often consider when studying hospital
+mortality:</p>
+<p><strong>1. Demographic Variables:</strong></p>
+<p><strong>Age: </strong>Advanced age is often associated with increased
+mortality risk.</p>
+<p><strong>Gender:</strong> Some studies consider gender differences in
+mortality rates.</p>
+<p><strong>2. Clinical Indicators and Severity of Illness:</strong></p>
+<p><strong>Diagnosis and Comorbidities:</strong>The primary diagnosis
+and the presence of comorbid conditions can significantly impact
+mortality.</p>
+<p><strong>Severity of Illness Scores:</strong> Scores like the Acute
+Physiology and Chronic Health Evaluation (APACHE) or Sequential Organ
+Failure Assessment (SOFA) help assess the severity of a patient’s
+condition.</p>
+<p><strong>3. Physiological and Laboratory Parameters:</strong></p>
+<p><strong>Vital Signs:</strong> Abnormalities in vital signs such as
+heart rate, blood pressure, respiratory rate, and temperature are often
+included.</p>
+<p><strong>Laboratory Results:</strong> Abnormalities in blood tests,
+including organ function markers, electrolytes, and blood gases, can be
+important indicators.</p>
+<p><strong>4. Treatment and Interventions:</strong></p>
+<p><strong>Type of Treatment: </strong>The specific medical or surgical
+interventions a patient undergoes.</p>
+<p><strong>Adherence to Protocols:</strong> Whether the patient receives
+recommended treatments and interventions.</p>
+<p><strong>5. Health Information Technology (HIT) and EHR
+Data:</strong></p>
+<p><strong>Electronic Health Record (EHR) Data:</strong> Information
+from EHRs, including medication history, previous hospitalizations, and
+patient history.</p>
+<p><strong>Health Information Exchange (HIE) Data:</strong> Exchange of
+patient information between different healthcare entities.</p>
+<p><strong>6. Time-Related Variables:</strong></p>
+<p><strong>Length of Stay:</strong> The duration of the hospitalization
+can impact mortality rates.</p>
+<p><strong>Time of Admission:</strong> Some studies consider whether
+admissions occur during weekends or nighttime, which might influence
+outcomes.</p>
+<p><strong>7. Patient-Specific Factors:</strong></p>
+<p><strong>Functional Status: </strong>The patient’s ability to perform
+daily activities independently.</p>
+<p><strong>Nutritional Status: </strong>Malnutrition can contribute to
+increased mortality risk.</p>
+<p>It’s important to note that the selection of variables may vary based
+on the specific research question, the dataset available, and the
+population under study. Additionally, advanced statistical methods,
+including machine learning techniques, may be employed to identify
+relevant variables and patterns that contribute to hospital mortality.
+Researchers often conduct thorough literature reviews and engage in
+expert consultations to inform their variable selection process.</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

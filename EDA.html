@@ -577,16 +577,9 @@ higher heart rate is associated with a higher risk of mortality.</p>
 comorbidities &lt;- c(&quot;hypertensive&quot;, &quot;diabetes&quot;, &quot;deficiencyanemias&quot;, &quot;depression&quot;, &quot;renal_failure&quot;, &quot;copd&quot;, &quot;hyperlipemia&quot;)
 
 # Melt the data for easier plotting
-mortality_long &lt;- melt(mortality_data_EDA, id.vars = &quot;outcome&quot;, measure.vars = comorbidities)</code></pre>
-<pre><code>## Warning in melt(mortality_data_EDA, id.vars = &quot;outcome&quot;, measure.vars =
-## comorbidities): The melt generic in data.table has been passed a tbl_df and
-## will attempt to redirect to the relevant reshape2 method; please note that
-## reshape2 is deprecated, and this redirection is now deprecated as well. To
-## continue using melt methods from reshape2 while both libraries are attached,
-## e.g. melt.list, you can prepend the namespace like
-## reshape2::melt(mortality_data_EDA). In the next version, this warning will
-## become an error.</code></pre>
-<pre class="r"><code># Plotting comorbidities by outcome
+mortality_long &lt;- melt(mortality_data_EDA, id.vars = &quot;outcome&quot;, measure.vars = comorbidities)
+
+# Plotting comorbidities by outcome
 ggplot(mortality_long, aes(x = variable, fill = as.factor(value))) +
   geom_bar(position = &quot;fill&quot;) +
   facet_wrap(~outcome) +
