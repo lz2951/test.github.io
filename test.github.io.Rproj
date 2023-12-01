@@ -11,6 +11,3 @@ Encoding: UTF-8
 
 RnwWeave: Sweave
 LaTeX: pdfLaTeX
-
-BuildType: Website
-WebsitePath: /Users/zhanglongyu/Desktop/Data Science/test.github.io
